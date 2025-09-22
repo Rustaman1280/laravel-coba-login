@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+       $middleware->alias([
+        'iniLogin' => \App\Http\Middleware\iniLogin::class,
+        'iniTamu' => \App\Http\Middleware\iniTamu::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
