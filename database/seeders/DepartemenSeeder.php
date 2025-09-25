@@ -15,11 +15,9 @@ class DepartemenSeeder extends Seeder
     {
         //
         $departemen = [
-            ['kodedepartemen' => '110', 'nama_departemen' => 'HRD'],
-            ['kodedepartemen' => '111', 'nama_departemen' => 'IT'],
-            ['kodedepartemen' => '112', 'nama_departemen' => 'Finance'],
-            ['kodedepartemen' => '113', 'nama_departemen' => 'Marketing'],
-            ['kodedepartemen' => '114', 'nama_departemen' => 'Sales'],
+            ['id' => '115', 'nama_departemen' => 'HRD'],
+            ['id' => '116', 'nama_departemen' => 'IT'],
+     
         ];
         DB::table('departemen')->insert($departemen);
     }

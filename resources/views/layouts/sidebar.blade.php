@@ -23,6 +23,13 @@
                     <span>Departemen</span></a>
             </li>
 
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ route('karyawan.index') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Karyawan</span></a>
+            </li>
+
             <!-- Divider -->
             
         </ul>
