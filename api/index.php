@@ -14,10 +14,13 @@ $_SERVER['SCRIPT_NAME'] = '/index.php';
 $_SERVER['HTTPS'] = 'on';
 $_SERVER['HTTP_X_FORWARDED_PROTO'] = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? 'https';
 
-// Use /tmp for compiled views to avoid write errors
-if (!getenv('VIEW_COMPILED_PATH')) {
-    putenv('VIEW_COMPILED_PATH=/tmp');
-}
+// Safe env fallbacks for serverless
+if (!getenv('APP_ENV')) putenv('APP_ENV=production');
+if (!getenv('APP_DEBUG')) putenv('APP_DEBUG=false');
+if (!getenv('LOG_CHANNEL')) putenv('LOG_CHANNEL=stderr');
+if (!getenv('SESSION_DRIVER')) putenv('SESSION_DRIVER=cookie');
+if (!getenv('CACHE_STORE')) putenv('CACHE_STORE=array');
+if (!getenv('VIEW_COMPILED_PATH')) putenv('VIEW_COMPILED_PATH=/tmp');
 
 // If using SQLite (default in this app), move DB to /tmp for read/write
 $useSqlite = getenv('DB_CONNECTION') === false || getenv('DB_CONNECTION') === 'sqlite';
