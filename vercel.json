@@ -3,7 +3,21 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "functions": {
-    "api/*.php": { "runtime": "vercel-php@latest" }
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.0",
+      "includeFiles": [
+        "artisan",
+        "composer.json",
+        "composer.lock",
+        "bootstrap/**",
+        "app/**",
+        "config/**",
+        "routes/**",
+        "resources/views/**",
+        "public/**",
+        "database/database.sqlite"
+      ]
+    }
   },
   "routes": [
     { "src": "^/favicon\\.ico$", "dest": "/public/favicon.ico" },
