@@ -55,7 +55,7 @@ class DepartemenController extends Controller
     public function edit($id)
     {
         //
-        $data = Departemen::where('kodedepartemen', $id)->first();
+        $data = Departemen::where('id', $id)->first();
         return view('departemen.edit')->with('data', $data);
     }
 
@@ -73,7 +73,7 @@ class DepartemenController extends Controller
         $data = ([
             'nama_departemen' => $request->input('nama_departemen'),
         ]);
-        Departemen::where('kodedepartemen', $id)->update($data);
+        Departemen::where('id', $id)->update($data);
         return redirect()->route('departemen.index')->with('success', 'Departemen berhasil diubah.');
     }
 
@@ -83,7 +83,7 @@ class DepartemenController extends Controller
     public function destroy($id)
     {
         //
-        Departemen::where('kodedepartemen',$id)->delete();
+        Departemen::where('id',$id)->delete();
         return redirect('departemen')->with('success', 'Departemen berhasil dihapus.');
     }
 }

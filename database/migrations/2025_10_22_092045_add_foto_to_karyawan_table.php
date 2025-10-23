@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departemen', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nama_departemen');
-            $table->timestamps();
+        Schema::table('karyawan', function (Blueprint $table) {
+            //
+            $table->string('foto')->nullable;
+
         });
     }
 
@@ -23,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departemen');
+        Schema::table('karyawan', function (Blueprint $table) {
+            //
+            $table->dropColumn('foto');
+        });
     }
 };

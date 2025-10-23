@@ -38,12 +38,13 @@
                             <h6 class="m-0 font-weight-bold text-primary">Sisfo Pegawai</h6>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-primary" href="{{ route('departemen.create') }}">Tambah Data</a>
+                            <a class="btn btn-primary" href="{{ route('karyawan.create') }}">Tambah Data</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Foto</th>
                                             <th>NIP</th>
                                             <th>Nama Karyawan</th>
                                             <th>Gaji Karyawan</th>
@@ -55,17 +56,22 @@
                                   
                                     <tbody>
                                         <?php $no = 1; ?>
-                                        @foreach ($karyawan as $karyawan)
+                                        @foreach ($karyawan as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $karyawan->nip }}</td>
-                                            <td>{{ $karyawan->nama_karyawan }}</td>
-                                            <td>{{ $karyawan->gaji_karyawan }}</td>
-                                            <td>{{ $karyawan->alamat }}</td>
-                                            <td>{{ $karyawan->jenis_kelamin }}</td>
-                                            <td>{{ $karyawan->departemen->nama_departemen }}</td>
-                                            <td><a class="btn btn-primary btn-sm" href="{{ url('karyawan/' . $karyawan->nip . '/edit') }}">Edit</a>
-                                            <form action="{{ url('karyawan/' . $karyawan->id) }}" method="POST" style="display:inline-block;">
+                                            <td>
+                                                @if (!empty($item->foto))
+                                                    <img src="{{ asset('foto/' . $item->foto) }}" width="100" alt="Foto {{ $item->nama_karyawan }}">
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->nip }}</td>
+                                            <td>{{ $item->nama_karyawan }}</td>
+                                            <td>{{ $item->gaji_karyawan }}</td>
+                                            <td>{{ $item->alamat }}</td>
+                                            <td>{{ $item->jenis_kelamin }}</td>
+                                            <td>{{ optional($item->departemen)->nama_departemen ?? '-' }}</td>
+                                            <td><a class="btn btn-primary btn-sm" href="{{ route('karyawan.edit', $item->id) }}">Edit</a>
+                                            <form action="{{ url('karyawan/' . $item->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?')">Delete</button>

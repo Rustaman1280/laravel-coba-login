@@ -8,6 +8,6 @@ class Departemen extends Model
 {
     use HasFactory;
     protected $table = 'departemen';
-    protected $primaryKey = 'kodedepartemen';
+    protected $primaryKey = 'id';
     protected $fillable = ['nama_departemen'];
 }

@@ -55,8 +55,8 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $departemen->nama_departemen }}</td>
-                                            <td><a class="btn btn-primary btn-sm" href="{{ url('departemen/' . $departemen->kodedepartemen . '/edit') }}">Edit</a>
-                                            <form action="{{ url('departemen/' . $departemen->kodedepartemen) }}" method="POST" style="display:inline-block;">
+                                            <td><a class="btn btn-primary btn-sm" href="{{ url('departemen/' . $departemen->id . '/edit') }}">Edit</a>
+                                            <form action="{{ url('departemen/' . $departemen->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Ingin Menghapus Data ?')">Delete</button>

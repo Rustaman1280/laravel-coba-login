@@ -6,7 +6,7 @@
 @endforeach
 @endif
 
-<form action="{{ url('departemen/' . $data->kodedepartemen) }}" method="POST">
+<form action="{{ url('departemen/' . $data->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="row">
